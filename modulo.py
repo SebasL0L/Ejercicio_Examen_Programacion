@@ -19,7 +19,7 @@ def leer_opcion():
             print("Debe ingresar un número.")
 
 
-# valicaiones
+# valicaiones.
 
 
 def validar_codigo(codigo, productos):
