@@ -132,6 +132,7 @@ def mostrar_productos(productos, inventario):
 
 # Gestión de productos
 
+
 def actualizar_precio(codigo, nuevo_precio, productos):
 
     codigo = codigo.strip().upper()
@@ -143,8 +144,17 @@ def actualizar_precio(codigo, nuevo_precio, productos):
     return False
 
 
-def agregar_producto(codigo, nombre, categoria, precio, disponible,
-                     stock, vendidos, productos, inventario):
+def agregar_producto(
+    codigo,
+    nombre,
+    categoria,
+    precio,
+    disponible,
+    stock,
+    vendidos,
+    productos,
+    inventario,
+):
 
     codigo = codigo.strip().upper()
 
