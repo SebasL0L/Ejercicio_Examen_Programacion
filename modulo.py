@@ -128,3 +128,42 @@ def mostrar_productos(productos, inventario):
         print("Stock:", inventario[codigo][0])
         print("Vendidos:", inventario[codigo][1])
         print("----------------------------")
+
+
+# Gestión de productos
+
+def actualizar_precio(codigo, nuevo_precio, productos):
+
+    codigo = codigo.strip().upper()
+
+    if codigo in productos:
+        productos[codigo][2] = nuevo_precio
+        return True
+
+    return False
+
+
+def agregar_producto(codigo, nombre, categoria, precio, disponible,
+                     stock, vendidos, productos, inventario):
+
+    codigo = codigo.strip().upper()
+
+    if codigo in productos:
+        return False
+
+    productos[codigo] = [nombre, categoria, precio, disponible]
+    inventario[codigo] = [stock, vendidos]
+
+    return True
+
+
+def eliminar_producto(codigo, productos, inventario):
+
+    codigo = codigo.strip().upper()
+
+    if codigo in productos:
+        del productos[codigo]
+        del inventario[codigo]
+        return True
+
+    return False
