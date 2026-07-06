@@ -1,6 +1,6 @@
 import os
 
-# Archivo principal del proyecto
+# Archivo principal del proyecto.
 import modulo as mo
 
 
