@@ -1,5 +1,6 @@
 # Funciones del sistema
 
+
 def leer_opcion():
 
     while True:
@@ -18,9 +19,9 @@ def leer_opcion():
             print("Debe ingresar un número.")
 
 
+# valicaiones
 
 
-# valicaiones 
 def validar_codigo(codigo, productos):
 
     codigo = codigo.strip().upper()
@@ -32,6 +33,7 @@ def validar_codigo(codigo, productos):
         return False
 
     return True
+
 
 def validar_nombre(nombre):
 
@@ -64,3 +66,65 @@ def validar_vendidos(vendidos):
 
     return vendidos >= 0
 
+
+# Consultas
+
+
+def buscar_codigo(codigo, productos):
+
+    codigo = codigo.strip().upper()
+
+    return codigo in productos
+
+
+def stock_categoria(categoria, productos, inventario):
+
+    total = 0
+
+    for codigo in productos:
+
+        if productos[codigo][1].lower() == categoria.lower():
+            total += inventario[codigo][0]
+
+    print("Stock total:", total)
+
+
+def buscar_precio(precio_min, precio_max, productos, inventario):
+
+    encontrados = []
+
+    for codigo in productos:
+
+        precio = productos[codigo][2]
+        stock = inventario[codigo][0]
+
+        if precio_min <= precio <= precio_max and stock > 0:
+            encontrados.append((productos[codigo][0], codigo))
+
+    encontrados.sort()
+
+    if len(encontrados) == 0:
+        print("No se encontraron productos.")
+
+    else:
+        for nombre, codigo in encontrados:
+            print(nombre, "-", codigo)
+
+
+def mostrar_productos(productos, inventario):
+
+    if len(productos) == 0:
+        print("No hay productos registrados.")
+        return
+
+    for codigo in productos:
+
+        print("\n----------------------------")
+        print("Código:", codigo)
+        print("Nombre:", productos[codigo][0])
+        print("Categoría:", productos[codigo][1])
+        print("Precio: $", productos[codigo][2])
+        print("Disponible:", productos[codigo][3])
+        print("Stock:", inventario[codigo][0])
+        print("Vendidos:", inventario[codigo][1])
+        print("----------------------------")
